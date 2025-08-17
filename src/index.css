@@ -1,7 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  font-family: 'Comic Sans MS', sans-serif;
-  background-color: #fff5f7;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  @apply font-comic bg-[#fff5f7] dark:bg-brandInk dark:text-white m-0 p-0 box-border transition-colors duration-300;
 }

@@ -1,56 +1,39 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-const HeaderContainer = styled.header`
-  background-color: #ffecf1;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  width: 100%; /* Ensure it spans the full width of the viewport */
-  box-sizing: border-box; /* Include padding and border in width calculation */
-  margin: 0; /* Remove default margins */
-`;
+const navLink = 'relative px-3 py-2 text-sm font-medium text-brandGold hover:text-brandPink transition';
 
-const Title = styled.h1`
-  color: #c49863;
-  font-family: 'Comic Sans MS', sans-serif;
-  margin: 0;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-left: auto; /* Ensure navigation is pushed to the right */
-`;
-
-const NavLink = styled.a`
-  margin: 0 15px;
-  color: #c49863;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const Header = () => (
-  <HeaderContainer>
-    <Title>
-      <a href="/" style={{ color: '#c49863', textDecoration: 'none' }}>
-        DroolingTails
-      </a>
-    </Title>
-    <Nav>
-      <NavLink href="/">Home</NavLink>
-      <NavLink href="/products">Products</NavLink>
-      <NavLink href="/about">About</NavLink>
-      <NavLink href="/contact">Contact</NavLink>
-    </Nav>
-  </HeaderContainer>
-);
+const Header = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-brandPink/20">
+      <div className="container flex items-center justify-between h-20">
+        <Link to="/" className="flex items-center gap-2 group">
+          <img src="/drooling tails logo.png" alt="Drooling Tails" className="w-12 h-12 object-contain" />
+          <span className="font-pacifico text-2xl text-brandGold group-hover:text-brandPink transition">Drooling Tails</span>
+        </Link>
+        <button className="md:hidden p-2" onClick={() => setOpen(o=>!o)} aria-label="Menu">
+          <span className="block w-6 h-[2px] bg-brandGold mb-1"></span>
+          <span className="block w-6 h-[2px] bg-brandGold mb-1"></span>
+          <span className="block w-6 h-[2px] bg-brandGold"></span>
+        </button>
+        <nav className={`flex-col md:flex-row md:flex absolute md:static left-0 right-0 top-full bg-white md:bg-transparent shadow md:shadow-none ${open ? 'flex' : 'hidden'} md:items-center`}> 
+          {[
+            ['/', 'Home'],
+            ['/shop', 'Shop'],
+            ['/about', 'About'],
+            ['/contact', 'Contact'],
+            ['/cart', 'Cart'],
+            ['/admin', 'Admin']
+          ].map(([to, label]) => (
+            <NavLink key={to} to={to} onClick={() => setOpen(false)} className={({isActive}) => `${navLink} ${isActive ? 'text-brandPink after:w-full' : 'after:w-0'} after:absolute after:left-3 after:-bottom-1 after:h-[2px] after:bg-brandPink after:transition-all after:duration-300`}>
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

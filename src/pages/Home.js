@@ -1,321 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import Carousel from '../components/Carousel';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-const HomeContainer = styled.div`
-  padding: 20px;
-  text-align: center;
-  color: #2F9ABF;
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-`;
-
-const BreadSliceContainer = styled.div`
-  width: 350px; /* Increased width */
-  height: 400px; 
-  background-color: #f5deb3; 
-  border-radius: 100px 100px 0 0; 
-  overflow: hidden;
-  position: relative;
-  margin-right: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
-  
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const Logo = styled.img`
-  width: 100%;
-  height: 111%;
-  object-fit: cover;
-  margin: -45px auto 0; /* Move up by 20px and center horizontally */
-
-`;
-
-const WelcomeText = styled.h1`
-  font-family: 'Arial', sans-serif;
-  color: #2F9ABF;
-`;
-
-const AboutSection = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8f8f8;
-  padding: 40px;
-  border-radius: 10px;
-  margin-top: 20px;
-`;
-
-const AboutTextContainer = styled.div`
-  flex: 1;
-  text-align: left;
-  margin-right: 20px;
-`;
-
-const AboutTitle = styled.h2`
-  font-family: 'Pacifico', cursive;
-  color: #2F9ABF;
-  margin-bottom: 20px;
-`;
-
-const AboutText = styled.p`
-  font-family: 'Roboto', sans-serif;
-  color: #2F9ABF;
-  margin-bottom: 30px;
-  font-size: 1.2em;
-`;
-
-const SatisfactionBars = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const BarContainer = styled.div`
-  width: 100%;
-  text-align: left;
-  margin-bottom: 20px;
-`;
-
-const BarTitle = styled.h4`
-  font-family: 'Roboto', sans-serif;
-  color: #2F9ABF;
-  margin-bottom: 10px;
-`;
-
-const Bar = styled.div`
-  background-color: #ffd6e7;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  height: 30px;
-  margin-top: 10px;
-`;
-
-const Progress = styled.div`
-  background-color: #ff85a2;
-  width: ${({ width }) => width};
-  height: 100%;
-  transition: width 0.5s ease;
-`;
-
-const TeamSection = styled.section`
-  background-color: #BEEEFF;
-  padding: 40px;
-  border-radius: 10px;
-  margin-top: 20px;
-  text-align: center;
-`;
-
-const TeamTitle = styled.h2`
-  font-family: 'Pacifico', cursive;
-  color: #2F9ABF;
-  margin-bottom: 20px;
-`;
-
-const TeamContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const TeamMember = styled.div`
-  background-color: #BEEEFF;
-  padding: 20px;
-  border-radius: 10px;
-  width: 45%;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const MemberImage = styled.img`
-  border-radius: 50%;
-  width: 300px;
-  height: 300px;
-  margin-bottom: 10px;
-`;
-
-const MemberName = styled.h2`
-  font-family: 'Roboto', sans-serif;
-  color: #2F9ABF;
-`;
-
-const MemberRole = styled.p`
-  font-family: 'Roboto', sans-serif;
-  color: #2F9ABF;
-`;
-
-const TestimonialsSection = styled.section`
-  background-color: #fff7f8;
-  padding: 40px;
-  border-radius: 10px;
-  margin-top: 20px;
-  text-align: center;
-`;
-
-const TestimonialTitle = styled.h2`
-  font-family: 'Pacifico', cursive;
-  color: #2F9ABF;
-  margin-bottom: 20px;
-`;
-
-const TestimonialContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Testimonial = styled.div`
-  background-color: #ffe6f2;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px;
-  width: 90%;
-  max-width: 900px;
-  text-align: left;
-`;
-
-const TestimonialText = styled.p`
-  font-family: 'Roboto', sans-serif;
-  color: #2F9ABF;
-  font-size: 1.2em;
-`;
-
-const Author = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-`;
-
-const AuthorImage = styled.img`
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-`;
-
-const AuthorName = styled.h4`
-  font-family: 'Roboto', sans-serif;
-  color: #2F9ABF;
-`;
-
-const InstagramSection = styled.section`
-  display: flex;
-  align-items: center;
-  padding: 40px;
-  border-radius: 10px;
-  margin-top: 20px;
-`;
-
-const InstagramTextContainer = styled.div`
-  flex: 1;
-  max-width: 50%;
-  margin-right: 20px;
-  background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
-  padding: 20px;
-  border-radius: 10px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 15px; /* Uniform gap between texts */
-`;
-
-const InstagramTitle = styled.h1`
-  font-family: 'Algerian', sans-serif; /* Updated font */
-  color: #2F9ABF;
-  font-weight: normal; /* Removed boldness */
-  font-size: 1.5em; /* Adjust size as needed */
-  margin: 0;
-`;
-
-const InstagramTagline = styled.p`
-  font-family: 'Calbiri', cursive; /* Font for tagline */
-  color: #2F9ABF; /* Shade of blue */
-  font-size: 2.3em; /* Larger size than the title */
-  font-style: italic; /* Italics */
-  margin: 0; /* Removed margin for uniform gap */
-`;
-
-const InstagramHandleContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
-
-const InstagramLogo = styled.img`
-  width: 30px; 
-  height: 30px;
-`;
-
-const InstagramHandle = styled.a`
-  color: #2F9ABF; /* Adjust color as needed */
-  text-decoration: none;
-  font-family: 'Arial', sans-serif;
-  font-size: 25px;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const InstagramImages = styled.div`
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  justify-content: flex-end;
-`;
-
-const InstagramImage = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  transform: skew(-5deg); /* Skew to create parallelogram effect */
-  /* Adjust positioning to achieve the pattern */
-  transform: ${({ column }) => column === 2 ? 'skew(0deg)' : 'skew(-5deg)'};
-  /* Use CSS Grid to position images */
-  grid-row: ${({ row }) => row};
-  grid-column: ${({ column }) => column};
-`;
-
-const MapSection = styled.section`
-  padding: 20px;
-  background-color: #f0f8ff; /* Light background color for contrast */
-  border-radius: 10px;
-  margin-top: 20px;
-`;
-
-const MapTitle = styled.h2`
-  font-family: 'Pacifico', cursive;
-  color: #2F9ABF;
-  margin-bottom: 20px;
-`;
-
-const Map = styled.iframe`
-  width: 100%;
-  height: 300px;
-  border: 0;
-  border-radius: 10px;
-  margin-top: 20px;
-`;
 
 const Home = () => {
   const settings = {
@@ -329,149 +16,107 @@ const Home = () => {
   };
 
   return (
-    <HomeContainer>
-      <HeaderContainer>
-        <BreadSliceContainer>
-          <Logo src="./drooling tails logo.png" alt="Drooling Tails Logo" />
-        </BreadSliceContainer>
-        <WelcomeText>
-          <h2>WELCOME TO DROOLING TAILS! </h2>
-          <h2>The Best Part? It's Pooch Approved !!!!</h2>
-          </WelcomeText>
-      </HeaderContainer>
-      <Carousel />
-      <AboutSection>
-        <AboutTextContainer>
-          <AboutTitle>About the Bakery</AboutTitle>
-          <AboutText>
-            Drooling Tails Pet Bakery was started by our fussy eater Chef Nemo and his clumsy hooman in her 20s. 
-            Here we make pretty and droolicious stuffs for your poochh 🍕🧁. 
-          </AboutText>
-        </AboutTextContainer>
-        <SatisfactionBars>
-          <BarContainer>
-            <BarTitle>Cake Design</BarTitle>
-            <Bar>
-              <Progress width="98%" />
-            </Bar>
-          </BarContainer>
-          <BarContainer>
-            <BarTitle>Cake Recipe</BarTitle>
-            <Bar>
-              <Progress width="95%" />
-            </Bar>
-          </BarContainer>
-          <BarContainer>
-            <BarTitle>Pet Satisfaction</BarTitle>
-            <Bar>
-              <Progress width="100%" />
-            </Bar>
-          </BarContainer>
-        </SatisfactionBars>
-      </AboutSection>
-      <TeamSection>
-        <TeamTitle>Meet the Team</TeamTitle>
-        <TeamContainer>
-          <TeamMember>
-            <MemberImage src="./nemo.jpeg" alt="Chef Nemo" />
-            <MemberName>Chef Nemo</MemberName>
-            <MemberRole>Head Baker</MemberRole>
-          </TeamMember>
-          <TeamMember>
-            <MemberImage src="./hooman.jpeg" alt="Clumsy Hooman" />
-            <MemberName>Clumsy Hooman(Saurabhi Deokar)</MemberName>
-            <MemberRole>Assistant Baker</MemberRole>
-          </TeamMember>
-        </TeamContainer>
-      </TeamSection>
-      <TestimonialsSection>
-        <TestimonialTitle>Testimonials</TestimonialTitle>
+    <div className="text-brandBlue">
+      <section className="bg-gradient-to-br from-brandPinkLight/40 via-white to-brandPinkLight/40">
+        <div className="container flex flex-col md:flex-row items-center gap-10 py-16">
+          <div className="flex-1">
+            <h1 className="font-pacifico text-4xl md:text-5xl leading-tight text-brandGold mb-6">Wholesome Handmade Treats For Tail-Wagging Moments</h1>
+            <p className="text-brandBlue/80 mb-6 max-w-lg">Fresh, nutritious & irresistibly cute bakes crafted lovingly for your furry best friend. 100% dog-safe ingredients, zero nasties.</p>
+            <div className="flex gap-4">
+              <a href="/shop" className="bg-brandPink text-white px-6 py-3 rounded shadow hover:shadow-lg transition text-sm font-semibold">Shop Now</a>
+              <a href="/about" className="px-6 py-3 rounded border border-brandPink text-brandPink hover:bg-brandPink hover:text-white transition text-sm font-semibold">Our Story</a>
+            </div>
+          </div>
+          <div className="flex-1 relative w-full max-w-md">
+            <div className="rounded-[3rem] overflow-hidden shadow-card ring-4 ring-white/60">
+              <img src="/p5.jpeg" alt="Featured Treat" className="w-full h-[460px] object-cover" />
+            </div>
+            <div className="absolute -bottom-6 -left-6 bg-white shadow-card px-4 py-3 rounded-xl text-xs font-medium">Freshly Baked Daily</div>
+            <div className="absolute top-6 -right-6 bg-brandPink text-white shadow-card px-4 py-3 rounded-xl text-xs font-medium">Pooch Approved</div>
+          </div>
+        </div>
+      </section>
+      <div className="container py-12">
+        <Carousel />
+      </div>
+      <section className="flex justify-between items-center bg-[#f8f8f8] p-10 rounded-lg mt-5 flex-col md:flex-row">
+        <div className="flex-1 text-left md:mr-5">
+          <h2 className="font-pacifico text-brandBlue mb-5 text-3xl">About the Bakery</h2>
+          <p className="font-roboto text-brandBlue mb-8 text-lg">Drooling Tails Pet Bakery was started by our fussy eater Chef Nemo and his clumsy hooman in her 20s. Here we make pretty and droolicious stuffs for your poochh 🍕🧁.</p>
+        </div>
+        <div className="flex-1 flex flex-col justify-center w-full">
+          {[
+            { title: 'Cake Design', width: 'w-[98%]' },
+            { title: 'Cake Recipe', width: 'w-[95%]' },
+            { title: 'Pet Satisfaction', width: 'w-full' }
+          ].map(bar => (
+            <div key={bar.title} className="w-full text-left mb-5">
+              <h4 className="font-roboto text-brandBlue mb-2">{bar.title}</h4>
+              <div className="bg-brandPinkLight rounded-xl overflow-hidden relative h-[30px] mt-2">
+                <div className={`bg-brandPink h-full transition-all duration-500 ${bar.width}`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+  <section className="bg-[#BEEEFF] p-10 rounded-lg mt-10 text-center">
+        <h2 className="font-pacifico text-brandBlue mb-5 text-3xl">Meet the Team</h2>
+        <div className="flex flex-col md:flex-row justify-around items-center gap-5">
+          {[
+            { img: './nemo.jpeg', name: 'Chef Nemo', role: 'Head Baker' },
+            { img: './hooman.jpeg', name: 'Clumsy Hooman(Saurabhi Deokar)', role: 'Assistant Baker' }
+          ].map(member => (
+            <div key={member.name} className="bg-[#BEEEFF] p-5 rounded-lg w-full md:w-[45%] text-center shadow-md">
+              <img src={member.img} alt={member.name} className="rounded-full w-[300px] h-[300px] mx-auto mb-3 object-cover" />
+              <h2 className="font-roboto text-brandBlue text-2xl">{member.name}</h2>
+              <p className="font-roboto text-brandBlue">{member.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+  <section className="bg-[#fff7f8] p-10 rounded-lg mt-10 text-center">
+        <h2 className="font-pacifico text-brandBlue mb-5 text-3xl">Testimonials</h2>
         <Slider {...settings}>
-          <TestimonialContainer>
-            <Testimonial>
-              <TestimonialText>"The cakes from Drooling Tails are a delight! My dog loves them."</TestimonialText>
-              <Author>
-                <AuthorImage src="public/author1.jpg" alt="Author 1" />
-                <AuthorName>Jane Doe</AuthorName>
-              </Author>
-            </Testimonial>
-          </TestimonialContainer>
-          <TestimonialContainer>
-            <Testimonial>
-              <TestimonialText>"Great variety and quality. My pets can't get enough."</TestimonialText>
-              <Author>
-                <AuthorImage src="public/author2.jpg" alt="Author 2" />
-                <AuthorName>John Smith</AuthorName>
-              </Author>
-            </Testimonial>
-          </TestimonialContainer>
-          <TestimonialContainer>
-            <Testimonial>
-              <TestimonialText>"My dog has never been happier. The treats are amazing!"</TestimonialText>
-              <Author>
-                <AuthorImage src="public/author3.jpg" alt="Author 3" />
-                <AuthorName>Sarah Johnson</AuthorName>
-              </Author>
-            </Testimonial>
-          </TestimonialContainer>
-          <TestimonialContainer>
-            <Testimonial>
-              <TestimonialText>"Highly recommend for any dog owner. Fantastic quality!"</TestimonialText>
-              <Author>
-                <AuthorImage src="public/author4.jpg" alt="Author 4" />
-                <AuthorName>Michael Brown</AuthorName>
-              </Author>
-            </Testimonial>
-          </TestimonialContainer>
-          <TestimonialContainer>
-            <Testimonial>
-              <TestimonialText>"The best bakery for pets in town. Exceptional service."</TestimonialText>
-              <Author>
-                <AuthorImage src="public/author5.jpg" alt="Author 5" />
-                <AuthorName>Linda Davis</AuthorName>
-              </Author>
-            </Testimonial>
-          </TestimonialContainer>
-          <TestimonialContainer>
-            <Testimonial>
-              <TestimonialText>"My dog loves the treats from Drooling Tails. Highly satisfied!"</TestimonialText>
-              <Author>
-                <AuthorImage src="public/author6.jpg" alt="Author 6" />
-                <AuthorName>Chris Lee</AuthorName>
-              </Author>
-            </Testimonial>
-          </TestimonialContainer>
+          {[
+            { text: '"The cakes from Drooling Tails are a delight! My dog loves them."', author: 'Jane Doe' },
+            { text: '"Great variety and quality. My pets can\'t get enough."', author: 'John Smith' },
+            { text: '"My dog has never been happier. The treats are amazing!"', author: 'Sarah Johnson' },
+            { text: '"Highly recommend for any dog owner. Fantastic quality!"', author: 'Michael Brown' },
+            { text: '"The best bakery for pets in town. Exceptional service."', author: 'Linda Davis' },
+            { text: '"My dog loves the treats from Drooling Tails. Highly satisfied!"', author: 'Chris Lee' }
+          ].map((t, idx) => (
+            <div key={idx} className="flex flex-col items-center">
+              <div className="bg-[#ffe6f2] p-5 rounded-lg m-2 w-[90%] max-w-[900px] text-left">
+                <p className="font-roboto text-brandBlue text-lg">{t.text}</p>
+                <div className="flex items-center mt-2">
+                  <div className="rounded-full w-[50px] h-[50px] bg-gray-300 mr-2" />
+                  <h4 className="font-roboto text-brandBlue">{t.author}</h4>
+                </div>
+              </div>
+            </div>
+          ))}
         </Slider>
-      </TestimonialsSection>
-      <InstagramSection>
-        <InstagramTextContainer>
-          <InstagramTitle>FOLLOW US ON INSTAGRAM</InstagramTitle>
-          <InstagramTagline>Sweet Moments are best saved memories!</InstagramTagline>
-          <InstagramHandleContainer>
-            <InstagramLogo src="/instagram-logo.png" alt="Instagram Logo" />
-            <InstagramHandle href="https://www.instagram.com/droolingtails_petbakery" target="_blank" rel="noopener noreferrer">
-              @droolingtails_petbakery
-            </InstagramHandle>
-          </InstagramHandleContainer>
-        </InstagramTextContainer>
-        <InstagramImages>
-          <InstagramImage src="/p1.jpeg" alt="Instagram 1" column="1" row="1 / span 2" />
-          <InstagramImage src="/p10.jpeg" alt="Instagram 2" column="2" row="1 / span 1" />
-          <InstagramImage src="/p8.jpeg" alt="Instagram 3" column="3" row="1 / span 2" />
-          <InstagramImage src="/p12.jpeg" alt="Instagram 4" column="1" row="2" />
-          <InstagramImage src="/p16.jpeg" alt="Instagram 5" column="2" row="2" />
-          <InstagramImage src="/p3.jpeg" alt="Instagram 6" column="3" row="2" />
-        </InstagramImages>
-      </InstagramSection>
-      <MapSection>
-      <MapTitle>Our Location</MapTitle>
-      <Map
-        src="https://www.google.com/maps/embed/v1/place?q=dahanukarvadi+kandivali+west&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-        allowFullScreen=""
-        loading="lazy"
-      ></Map>
-    </MapSection>
-    </HomeContainer>
+      </section>
+  <section className="flex flex-col md:flex-row items-center p-10 rounded-lg mt-10 gap-5">
+        <div className="flex-1 max-w-[50%] mr-5 bg-white/80 p-5 rounded-lg relative flex flex-col items-start gap-4">
+          <h1 className="text-brandBlue font-normal text-xl m-0">FOLLOW US ON INSTAGRAM</h1>
+          <p className="font-[Calbiri] text-brandBlue text-[2.3em] italic m-0 leading-tight">Sweet Moments are best saved memories!</p>
+          <div className="flex items-center gap-2">
+            <img src="/instagram-logo.png" alt="Instagram Logo" className="w-[30px] h-[30px]" />
+            <a href="https://www.instagram.com/droolingtails_petbakery" target="_blank" rel="noopener noreferrer" className="text-brandBlue no-underline font-sans text-[25px] hover:underline">@droolingtails_petbakery</a>
+          </div>
+        </div>
+        <div className="flex-1 grid grid-cols-3 gap-2 justify-end">
+          {['/p1.jpeg','/p10.jpeg','/p8.jpeg','/p12.jpeg','/p16.jpeg','/p3.jpeg'].map((src,i)=>(
+            <img key={src} src={src} alt={`Instagram ${i+1}`} className={`w-full h-auto rounded-lg ${i===1?'':'skew-x-[-5deg]'}`} />
+          ))}
+        </div>
+      </section>
+  <section className="p-5 bg-[#f0f8ff] rounded-lg mt-10">
+        <h2 className="font-pacifico text-brandBlue mb-5 text-3xl">Our Location</h2>
+        <iframe src="https://www.google.com/maps/embed/v1/place?q=dahanukarvadi+kandivali+west&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" allowFullScreen="" loading="lazy" title="map" className="w-full h-[300px] border-0 rounded-lg mt-5" />
+      </section>
+    </div>
   );
 };
 
